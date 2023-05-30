@@ -1,4 +1,4 @@
-package com.pruebatecnica.Sanitas;
+package com.pruebatecnica.sanitas;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

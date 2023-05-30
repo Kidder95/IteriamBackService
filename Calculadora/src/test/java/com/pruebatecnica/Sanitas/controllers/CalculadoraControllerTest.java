@@ -1,6 +1,8 @@
-package com.pruebatecnica.Sanitas.controllers;
+package com.pruebatecnica.sanitas.controllers;
 
-import com.pruebatecnica.Sanitas.service.CalculadoraService;
+import com.pruebatecnica.sanitas.models.Operandos;
+import com.pruebatecnica.sanitas.models.ResultOperandos;
+import com.pruebatecnica.sanitas.service.CalculadoraService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -8,6 +10,8 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -19,30 +23,35 @@ class CalculadoraControllerTest {
     private CalculadoraService calculadoraService;
 
     @InjectMocks
-    CalculadoraController calculadoraController;
+    private CalculadoraController calculadoraController;
 
     @BeforeEach
     public void setup(){
         MockitoAnnotations.openMocks(this);
+
     }
 
     @Test
     public void testSumar(){
-        when(calculadoraService.sumar(any(), any())).thenReturn(new BigDecimal(10));
+        when(calculadoraService.sumar(any())).thenReturn(new ResultOperandos(new BigDecimal(10)));
+        List<BigDecimal> listOperandos= new ArrayList<>();
+        BigDecimal bigDecimal = new BigDecimal(5);
+        listOperandos.add(bigDecimal);
+        ResultOperandos result= calculadoraController.sumar(new Operandos(listOperandos));
 
-        BigDecimal result= calculadoraController.sumar(new BigDecimal(5), new BigDecimal( 5));
-
-        assertEquals(new BigDecimal(10), result);
+        assertEquals(new ResultOperandos(new BigDecimal(10)), result);
 
     }
 
     @Test
     public void testRestar(){
-        when(calculadoraService.restar(any(), any())).thenReturn(new BigDecimal(0));
+        when(calculadoraService.restar(any())).thenReturn(new ResultOperandos(new BigDecimal(0)));
+        List<BigDecimal> listOperandos= new ArrayList<>();
+        BigDecimal bigDecimal = new BigDecimal(5);
+        listOperandos.add(bigDecimal);
+        ResultOperandos result= calculadoraController.restar(new Operandos(listOperandos));
 
-        BigDecimal result= calculadoraController.restar(new BigDecimal(5), new BigDecimal( 5));
-
-        assertEquals(new BigDecimal(0), result);
+        assertEquals(new ResultOperandos(new BigDecimal(0)), result);
     }
 
 }

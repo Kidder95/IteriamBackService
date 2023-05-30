@@ -1,11 +1,14 @@
-package com.pruebatecnica.Sanitas.service;
+package com.pruebatecnica.sanitas.service;
+
+import com.pruebatecnica.sanitas.models.Operandos;
+import com.pruebatecnica.sanitas.models.ResultOperandos;
 
 import java.math.BigDecimal;
 
 public interface CalculadoraService {
 
 
-    public BigDecimal sumar(BigDecimal numero1, BigDecimal numero2);
+     ResultOperandos sumar(Operandos operandos);
 
-    public BigDecimal restar(BigDecimal numero1, BigDecimal numero2);
+     ResultOperandos restar(Operandos operandos);
 }

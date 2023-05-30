@@ -1,7 +1,9 @@
-package com.pruebatecnica.Sanitas.controllers;
+package com.pruebatecnica.sanitas.controllers;
 
 
-import com.pruebatecnica.Sanitas.service.CalculadoraService;
+import com.pruebatecnica.sanitas.models.Operandos;
+import com.pruebatecnica.sanitas.models.ResultOperandos;
+import com.pruebatecnica.sanitas.service.CalculadoraService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +21,12 @@ public class CalculadoraController {
     private final CalculadoraService calculadoraService;
 
     @PostMapping("/sumar")
-    public BigDecimal sumar(@PathVariable BigDecimal numero1, @PathVariable BigDecimal numero2){
-        return calculadoraService.sumar(numero1, numero2);
+    public ResultOperandos sumar(@RequestBody Operandos operandos){
+        return calculadoraService.sumar(operandos);
     }
 
     @PostMapping("/restar")
-    public BigDecimal restar(@PathVariable BigDecimal numero1, @PathVariable BigDecimal numero2){
-        return calculadoraService.restar(numero1, numero2);
+    public ResultOperandos restar(@RequestBody Operandos operandos){
+        return calculadoraService.restar(operandos);
     }
 }
