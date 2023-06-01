@@ -9,7 +9,6 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,13 +19,8 @@ public class CalculadoraController {
     @Autowired
     private final CalculadoraService calculadoraService;
 
-    @PostMapping("/sumar")
-    public ResultOperandos sumar(@RequestBody Operandos operandos){
-        return calculadoraService.sumar(operandos);
-    }
-
-    @PostMapping("/restar")
-    public ResultOperandos restar(@RequestBody Operandos operandos){
-        return calculadoraService.restar(operandos);
+    @PostMapping("/operate")
+    public ResultOperandos operate(@RequestBody Operandos operandos){
+        return calculadoraService.operate(operandos);
     }
 }

@@ -7,8 +7,5 @@ import java.math.BigDecimal;
 
 public interface CalculadoraService {
 
-
-     ResultOperandos sumar(Operandos operandos);
-
-     ResultOperandos restar(Operandos operandos);
+     ResultOperandos operate(Operandos operandos);
 }
